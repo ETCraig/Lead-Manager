@@ -1,17 +1,36 @@
 import axios from 'axios';
 
-import { GET_LEADS } from './Types';
+import { ADD_LEAD, GET_LEADS, DELETE_LEAD } from './Types';
 
-export const getLeads = () => (dispatch, getState) => {
-    axios
-        .get("/api/leads/", tokenConfig(getState))
+export const getLeads = () => dispatch => {
+    axios.get("/api/leads/")
         .then(res => {
             dispatch({
                 type: GET_LEADS,
                 payload: res.data
             });
         })
-        .catch(err =>
-            dispatch(returnErrors(err.response.data, err.response.status))
-        );
+        .catch(err => console.log(err));
 };
+
+export const deleteLead = (id) => dispatch => {
+    axios.delete(`/api/leads/${id}/`)
+        .then(res => {
+            dispatch({
+                type: DELETE_LEAD,
+                payload: id
+            });
+        })
+        .catch(err => console.log(err));
+};
+
+export const addLead = (lead) => dispatch => {
+    axios.post('/api/leads/', lead)
+    .then(res => {
+        dispatch({
+            type: ADD_LEAD,
+            payload: res.data
+        });
+    })
+    .catch(err => console.log(err));
+}
