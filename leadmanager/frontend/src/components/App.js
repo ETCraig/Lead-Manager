@@ -13,12 +13,13 @@ import AlertTemplate from 'react-alert-template-basic';
 import Header from './layout/Header';
 import Dashboard from './leads/Dashboard';
 import Alerts from '../components/layout/Alerts';
-import Login from '../components/accounts/Login';
-import Register from '../components/accounts/Register';
+import Login from './accounts/Login';
+import Register from './accounts/Register';
 import PrivateRoute from './common/PrivateRoute';
 
 import {Provider} from 'react-redux';
 import store from '../store';
+import {loadUser} from '../actions/auth';
 
 const alertOptions = {
     timeout: 3000,
@@ -26,6 +27,9 @@ const alertOptions = {
 }
 
 class App extends Component {
+    componentDidMount() {
+        store.dispatch(loadUser());
+    }
     render() {
         return(
             <Provider store={store}>
