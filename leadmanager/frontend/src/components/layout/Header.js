@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {logout} from '../../actions/auth';
+import { logout } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
 export class Header extends Component {
@@ -10,7 +10,7 @@ export class Header extends Component {
     logout: PropTypes.func.isRequired
   }
   render() {
-    const {isAuthenticated, user} = this.props.auth;
+    const { isAuthenticated, user } = this.props.auth;
 
     const authLinks = (
       <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -20,8 +20,8 @@ export class Header extends Component {
           </strong>
         </span>
         <li className="nav-item">
-          <button 
-            className="nav-link btn btn-info btn-sm text-light" 
+          <button
+            className="nav-link btn btn-info btn-sm text-light"
             onClick={this.props.logout}
           >
             Logout
@@ -60,4 +60,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 })
 
-export default connect(mapStateToProps, {logout})(Header)
+export default connect(mapStateToProps, { logout })(Header)

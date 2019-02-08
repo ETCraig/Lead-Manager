@@ -43,7 +43,7 @@ export const login = (username, password) => dispatch => {
     });
 }
 
-export const register = ({username, password, email}) => dispatch => {
+export const register = ({ username, password, email }) => dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json'

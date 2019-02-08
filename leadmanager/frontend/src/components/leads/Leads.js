@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react'
 
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types'; 
-import {getLeads, deleteLead} from '../../actions/leads';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getLeads, deleteLead } from '../../actions/leads';
 
 export class Leads extends Component {
   static propTypes = {
@@ -36,8 +36,8 @@ export class Leads extends Component {
                 <td>{lead.email}</td>
                 <td>{lead.message}</td>
                 <td>
-                  <button 
-                    onClick={this.props.deleteLead.bind(this, lead.id)} 
+                  <button
+                    onClick={this.props.deleteLead.bind(this, lead.id)}
                     className="btn btn-danger btn-sm">
                     {" "}
                     Delete
